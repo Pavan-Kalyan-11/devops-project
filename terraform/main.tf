@@ -249,6 +249,8 @@ subnet_ids = concat(
 [for s in aws_subnet.private : s.id]
 )
 
+enable_cluster_creator_admin_permissions = true
+
 #  EKS Managed Node Group (The Worker Nodes)
 
 eks_managed_node_groups = {
