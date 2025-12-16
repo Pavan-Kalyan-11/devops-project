@@ -27,7 +27,8 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./my-app
+          file: ./my-app/Dockerfile
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/my-nginx-app:latest
