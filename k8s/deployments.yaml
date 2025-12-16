@@ -1,0 +1,40 @@
+# Defines the Application Pods
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2  # Runs 2 instances for High Availability
+  selector:
+    matchLabels:
+      app: my-nginx-app  # Must match the labels in the template below
+  template:
+    metadata:
+      labels:
+        app: my-nginx-app
+    spec:
+      containers:
+      - name: nginx
+        image: pavankalyansdocker/my-nginx-app:latest           # update with your Docker Hub username
+        ports:
+        - containerPort: 80
+          ####### --- SENIOR LEVEL CONFIGS ---
+  ############  Resource Constraints (Prevents crashing the node)
+
+  
+        resources:
+          requests:
+            memory: "64Mi"          # Min required to schedule
+            cpu: "250m"
+          limits:
+            memory: "128Mi"         # Max allowed (prevents leaks)
+            cpu: "500m"
+
+        # Health checks
+        readinessProbe:         # Waits for app to be ready before sending traffic
+          httpGet: { path: /, port: 80 }
+          initialDelaySeconds: 5
+        livenessProbe:              # Restarts the pod if app freezes
+          httpGet: { path: /, port: 80 }
+          initialDelaySeconds: 15

@@ -1,0 +1,6 @@
+project_name = "devops-practice"
+environment = "dev"
+aws_region = "ap-south-1"
+my_ip_cidr = "103.123.45.67/32"
+ec2_ami_id = "ami-0f5ee6df11d59c679"
+ec2_key_pair_name = "my-keypair"
