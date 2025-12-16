@@ -241,6 +241,8 @@ version = "~> 20.0"
 cluster_name = "${var.project_name}-eks"
 cluster_version = var.eks_version
 
+cluster_endpoint_public_access = true
+
 vpc_id = aws_vpc.my_vpc.id
 subnet_ids = concat(
 [for s in aws_subnet.public : s.id],
