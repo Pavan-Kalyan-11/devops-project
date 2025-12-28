@@ -6,6 +6,8 @@ This project demonstrates a production-ready DevOps lifecycle. It provisions a K
 ### 🏗 Architecture
 **User Code** → **GitHub Repo** → **GitHub Actions (CI)** → **Docker Hub** → **AWS EKS (CD)**
 
+![alt text](/images/Devops_Architecture.png)
+
 ## 🛠 Tech Stack
 * **Cloud Provider:** AWS (VPC, EC2, EKS, S3, DynamoDB)
 * **Infrastructure as Code:** Terraform (with Remote State Management)
